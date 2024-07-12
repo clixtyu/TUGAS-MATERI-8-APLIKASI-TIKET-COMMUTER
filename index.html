@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Aplikasi Belanja Maju Jaya</title>
+<script type="text/javascript">
+  function hitung() {
+    var harga = document.getElementById("harga").value;
+    var jumlah = document.getElementById("jumlah").value;
+
+    if (harga > 0 && jumlah > 0) {
+      var total = parseInt(harga) * parseInt(jumlah);
+      document.getElementById("total").value = total;
+      diskon();
+      bonus();
+    } else {
+      document.getElementById("total").value = "";
+      document.getElementById("diskon").value = "";
+      document.getElementById("bonus").value = "";
+    }
+  }
+
+  function diskon() {
+    var total = document.getElementById("total").value;
+    if (total >= 500000) {
+      var diskon = parseInt(total) * 20 / 100;
+      document.getElementById("diskon").value = diskon;
+    } else if (total >= 200000) {
+      var diskon = parseInt(total) * 15 / 100;
+      document.getElementById("diskon").value = diskon;
+    } else if (total >= 100000) {
+      var diskon = parseInt(total) * 10 / 100;
+      document.getElementById("diskon").value = diskon;
+    } else if (total >= 50000) {
+      var diskon = parseInt(total) * 5 / 100;
+      document.getElementById("diskon").value = diskon;
+    } else {
+      document.getElementById("diskon").value = 0;
+    }
+  }
+
+  function bonus() {
+    var total = document.getElementById("total").value;
+    if (total >= 500000) {
+      var bonus = 'Tas Pinggang';
+      document.getElementById("bonus").value = bonus;
+    } else if (total >= 200000) {
+      var bonus = 'Payung';
+      document.getElementById("bonus").value = bonus;
+    } else if (total >= 100000) {
+      var bonus = 'Kaos';
+      document.getElementById("bonus").value = bonus;
+    } else if (total >= 50000) {
+      var bonus = 'Cangkir';
+      document.getElementById("bonus").value = bonus;
+    } else {
+      document.getElementById("bonus").value = "Tidak ada";
+    }
+  }
+</script>
+</head>
+<body>
+  <h3>Aplikasi Belanja Maju Jaya</h3>
+  <table>
+    <tbody>
+      <tr>
+        <td width="120">Harga Satuan</td>
+        <td width="5">:</td>
+        <td><input type="text" name="harga" id="harga" size="15"></td>
+      </tr>
+      <tr>
+        <td width="120">Jumlah Barang</td>
+        <td width="5">:</td>
+        <td><input type="text" name="jumlah" id="jumlah" size="15"></td>
+      </tr>
+      <tr>
+        <td width="120">Total</td>
+        <td width="5">:</td>
+        <td><input type="text" name="total" id="total" size="15" readonly="readonly"></td>
+      </tr>
+      <tr>
+        <td width="120">Diskon</td>
+        <td width="5">:</td>
+        <td><input type="text" name="diskon" id="diskon" size="15" readonly="readonly"></td>
+      </tr>
+      <tr>
+        <td width="120">Bonus</td>
+        <td width="5">:</td>
+        <td><input type="text" name="bonus" id="bonus" size="25" readonly="readonly"></td>
+      </tr>
+    </tbody>
+    <tr>
+      <td colspan="3" align="center"><input type="button" value="hitung" onclick="hitung()"></td>
+    </tr>
+  </table>
+</body>
+</html>
